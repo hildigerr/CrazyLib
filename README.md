@@ -1,4 +1,4 @@
 CrazyLib
 ========
 
-A mad lib 
+A mad lib interpreter.

@@ -13,8 +13,10 @@ close(INFILE);
 
 #Fill In Select Words
 foreach( @madlib ) {
-    while( m/<([^<]+)>/g ) {#     while( ($what) = m/<([^<]+)>/ ) {
-        print "Enter a $1: ";#         print "Enter a $what: ";
+    while( ($what) = m/<([^<]+)>/ ) {
+        ($ch0) = split( //, $what );
+        if( $ch0 =~ m/[aeiou]/i ) { print "Enter an $what: "; }
+        else { print "Enter a $what: "; }
         $input = <STDIN>;
         chomp $input;
         s/<([^<]+)>/$input/;

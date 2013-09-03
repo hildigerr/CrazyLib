@@ -1,6 +1,7 @@
 #!/usr/bin/perl -w
 
 use strict;
+use Time::Piece;
 
 #Select Input File
 my( $madlibf );
@@ -31,4 +32,11 @@ foreach( @madlib ) {
 print "\n@madlib\n";
 
 #Save Result if Disired
-#print "Save the result? ";
+print "Save the result? ";
+if( <STDIN> =~ m/^y/i ) {
+    my $savefile = "$madlibf-".localtime->epoch;
+    open( SAVEM, ">$savefile" ) || die "Cannot save $savefile: $!\n";
+    print "Saving as $savefile\n";
+    print SAVEM @madlib;
+    close(SAVEM);
+}

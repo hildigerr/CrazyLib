@@ -26,12 +26,6 @@ my @madlib = <INFILE>;
 close(INFILE);
 
 #Fill In Select Words
-# foreach( @madlib ) {
-#     while( my ($what) = m/<([^<]+)>/ ) {
-#         my $input = get_input_word($what);
-#         s/<[^<]+>/$input/;
-#     }
-# }
 my( %words );
 foreach( @madlib ) {
     while( my ($what) = m/<([^<]+)>/ ) {

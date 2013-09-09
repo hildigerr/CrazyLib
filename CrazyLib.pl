@@ -10,6 +10,7 @@ sub get_input_word {
     else { print "Enter a $what: "; }
     my $input = <STDIN>;
     chomp $input;
+    return $input;
 }
 
 #Select Input File
@@ -25,10 +26,25 @@ my @madlib = <INFILE>;
 close(INFILE);
 
 #Fill In Select Words
+# foreach( @madlib ) {
+#     while( my ($what) = m/<([^<]+)>/ ) {
+#         my $input = get_input_word($what);
+#         s/<[^<]+>/$input/;
+#     }
+# }
+my( %words );
 foreach( @madlib ) {
     while( my ($what) = m/<([^<]+)>/ ) {
+        if( my ($id) = $what=~m/#(\d+)/ ) {
+            if( ! exists $words{$id} ) {
+                ($what) = split( /#/, $what );
+                $words{$id} = get_input_word($what);
+            }
+            s/<[^<]+>/$words{$id}/;
+        } else {
         my $input = get_input_word($what);
         s/<[^<]+>/$input/;
+        }
     }
 }
 

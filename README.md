@@ -9,7 +9,7 @@ designated within &lt;angle brackets&gt;. To have a single input be put in multi
 Can also use ____(this) format, which will make your madlibs look nice for printing. You may also use combinations of the formats as so:
 <ul>
 <li>&lt;Noun&gt;</li>
-____________&lt;Noun&gt;</li>
+<li>____________&lt;Noun&gt;</li>
 <li>(Noun)</li>
 <li>____________(Noun)</li>
 </ul>

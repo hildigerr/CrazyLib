@@ -28,16 +28,16 @@ close(INFILE);
 #Fill In Select Words
 my( %words );
 foreach( @madlib ) {
-    while( my ($what) = m/<([^<]+)>/ ) {
+    while( my ($what) = m/_*[<\(]([^<\)]+)[>\)]/ ) {
         if( my ($id) = $what=~m/#(\d+)/ ) {
             if( ! exists $words{$id} ) {
                 ($what) = split( /#/, $what );
                 $words{$id} = get_input_word($what);
             }
-            s/<[^<]+>/$words{$id}/;
+            s/_*[<\(][^<\)]+[>\)]/$words{$id}/;
         } else {
         my $input = get_input_word($what);
-        s/<[^<]+>/$input/;
+        s/_*[<\(][^<\)]+[>\)]/$input/;
         }
     }
 }
